@@ -7,18 +7,18 @@ import com.spring.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import javax.security.sasl.AuthenticationException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.logging.Logger;
 
 @RestController
-@RequestMapping(value = "/api/v1/")
+@RequestMapping(value = "/api/v1/auth/")
 public class AuthenticationRestControllerV1 {
 
     private final AuthenticationManager authenticationManager;
@@ -34,20 +34,17 @@ public class AuthenticationRestControllerV1 {
         this.userService = userService;
     }
 
-    @PostMapping("signup")
-    public ResponseEntity signup(@RequestBody AuthenticationRequestDto requestDto) {
-        String username = requestDto.getUsername();
-        User user = new User();
-        user.setUsername(username);
-        user.setPassword(requestDto.getPassword());
+    @PostMapping("login")
+    public ResponseEntity login(@RequestBody AuthenticationRequestDto requestDto) {
+        System.out.println("LOGIN");
 
-        user =  userService.register(user, "ROLE_USER");
+        String username = requestDto.getUsername();
+        authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, requestDto.getPassword()));
+        User user = userService.findByUsername(username);
 
         if (user == null) {
-            throw new UsernameNotFoundException("Failed to create user with username " + username);
+            throw new UsernameNotFoundException("User with username: " + username + " not found");
         }
-
-        authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, requestDto.getPassword()));
 
         String token = jwtTokenProvider.createToken(username, user.getRoles());
 
@@ -57,23 +54,5 @@ public class AuthenticationRestControllerV1 {
 
         return ResponseEntity.ok(response);
     }
-
-    @PostMapping("auth/login")
-    public ResponseEntity login(@RequestBody AuthenticationRequestDto requestDto) {
-            String username = requestDto.getUsername();
-            authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, requestDto.getPassword()));
-            User user = userService.findByUsername(username);
-
-            if (user == null) {
-                throw new UsernameNotFoundException("User with username: " + username + " not found");
-            }
-
-            String token = jwtTokenProvider.createToken(username, user.getRoles());
-
-            Map<Object, Object> response = new HashMap<>();
-            response.put("username", username);
-            response.put("token", token);
-
-            return ResponseEntity.ok(response);
-    }
 }
+

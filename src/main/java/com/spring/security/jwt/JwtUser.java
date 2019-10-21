@@ -1,16 +1,15 @@
 package com.spring.security.jwt;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
 import java.util.Collection;
 import java.util.Date;
 import java.util.UUID;
 
-public class JwtUser implements UserDetails
-{
+public class JwtUser implements UserDetails {
+
     private final UUID id;
     private final String username;
     private final String password;
@@ -18,54 +17,67 @@ public class JwtUser implements UserDetails
     private final Date lastPasswordResetDate;
     private final Collection<? extends GrantedAuthority> authorities;
 
-
-    public JwtUser(UUID id,
-                   String username,
-                   String password,
-                   boolean enabled,
-                   Date lastPasswordResetDate,
-                   Collection<? extends GrantedAuthority> authorities) {
-
+    public JwtUser(
+            UUID id,
+            String username,
+            String password, Collection<? extends GrantedAuthority> authorities,
+            boolean enabled,
+            Date lastPasswordResetDate
+    ) {
         this.id = id;
         this.username = username;
         this.password = password;
+        this.authorities = authorities;
         this.enabled = enabled;
         this.lastPasswordResetDate = lastPasswordResetDate;
-        this.authorities = authorities;
     }
 
-    @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        return null;
-    }
-
-    @Override
-    public String getPassword() {
-        return this.password;
+    @JsonIgnore
+    public UUID getId() {
+        return id;
     }
 
     @Override
     public String getUsername() {
-        return this.username;
+        return username;
     }
 
+    @JsonIgnore
     @Override
     public boolean isAccountNonExpired() {
         return true;
     }
 
+    @JsonIgnore
     @Override
     public boolean isAccountNonLocked() {
         return true;
     }
 
+    @JsonIgnore
     @Override
     public boolean isCredentialsNonExpired() {
         return true;
     }
 
+    @JsonIgnore
+    @Override
+    public String getPassword() {
+        return password;
+    }
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return authorities;
+    }
+
     @Override
     public boolean isEnabled() {
         return enabled;
+    }
+
+    @JsonIgnore
+    public Date getLastPasswordResetDate() {
+        return lastPasswordResetDate;
     }
 }

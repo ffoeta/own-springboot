@@ -12,9 +12,6 @@ import java.util.UUID;
 public class AdminUserDto {
     private UUID id;
     private String username;
-    private String firstName;
-    private String lastName;
-    private String email;
     private String status;
 
     public User toUser() {
