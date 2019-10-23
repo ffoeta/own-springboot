@@ -1,20 +1,17 @@
-package com.spring.rest;
+package com.spring.rest.V1.admin;
 
-import com.spring.dto.AdminUserDto;
+import com.spring.dto.admin.AdminUserDto;
+import com.spring.dto.ByIdRequestDto;
 import com.spring.model.User;
 import com.spring.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
-import java.util.logging.Logger;
 
 /**
  * REST controller for ROLE_ADMIN requests.
@@ -34,8 +31,21 @@ public class AdminRestControllerV1 {
         this.userService = userService;
     }
 
+    @GetMapping(value = "user")
+    public ResponseEntity<AdminUserDto> getUserById(@RequestBody ByIdRequestDto byIdRequestDto) {
+        UUID id = byIdRequestDto.getId();
+        System.out.println(id);
+        User user = userService.findById(id);
+
+        if (user == null) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+
+        return new ResponseEntity<AdminUserDto>(AdminUserDto.fromUser(user), HttpStatus.OK);
+    }
+
     @GetMapping(value = "users")
-    public ResponseEntity<List<AdminUserDto>> getUserById() {
+    public ResponseEntity<List<AdminUserDto>> getUsers() {
         List<User> users = userService.getAll();
 
         List<AdminUserDto> result = new ArrayList<>();

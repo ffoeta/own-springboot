@@ -1,4 +1,4 @@
-package com.spring.dto;
+package com.spring.dto.admin;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.spring.model.Status;

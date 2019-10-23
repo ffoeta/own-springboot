@@ -1,0 +1,169 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+    <changeSet id="1.0.0" author="lyachko">
+
+        <createTable tableName="users">
+            <column name="id" type="UUID" defaultValue="gen_random_uuid()">
+                <constraints primaryKey="true" unique="true" nullable="false"/>
+            </column>
+            <column name="username" type="varchar(100)">
+                <constraints nullable="false" unique="true"/>
+            </column>
+            <column name="password" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="status" type="varchar(25)" defaultValue="ACTIVE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created" type="TIMESTAMP" defaultValue="now()">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated" type="TIMESTAMP" defaultValue="now()">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="roles">
+            <column name="id" type="UUID" defaultValue="gen_random_uuid()">
+                <constraints primaryKey="true" unique="true" nullable="false"/>
+            </column>
+            <column name="name" type="varchar(50)">
+                <constraints nullable="false" unique="true"/>
+            </column>
+            <column name="status" type="varchar(25)" defaultValue="ACTIVE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created" type="TIMESTAMP" defaultValue="now()">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated" type="TIMESTAMP" defaultValue="now()">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="items">
+            <column name="id" type="UUID" defaultValue="gen_random_uuid()">
+                <constraints primaryKey="true" unique="true" nullable="false"/>
+            </column>
+            <column name="name" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="status" type="varchar(25)" defaultValue="ACTIVE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created" type="TIMESTAMP" defaultValue="now()">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated" type="TIMESTAMP" defaultValue="now()">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="details">
+            <column name="id" type="UUID" defaultValue="gen_random_uuid()">
+                <constraints primaryKey="true" unique="true" nullable="false"/>
+            </column>
+            <column name="price" type="MONEY">
+                <constraints nullable="false"/>
+            </column>
+            <column name="camera_f" type="VARCHAR(50)">
+                <constraints/>
+            </column>
+            <column name="camera_b" type="VARCHAR(50)"/>
+            <column name="cpu" type="VARCHAR(50)"/>
+            <column name="gpu" type="VARCHAR(50)"/>
+            <column name="nfc" type="VARCHAR(50)"/>
+            <column name="condition" type="VARCHAR(50)"/>
+            <column name="screen" type="VARCHAR(50)"/>
+            <column name="diagonal" type="VARCHAR(50)"/>
+            <column name="notes" type="VARCHAR(500)">
+                <constraints/>
+            </column>
+            <column name="status" type="varchar(25)" defaultValue="ACTIVE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created" type="TIMESTAMP" defaultValue="now()">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated" type="TIMESTAMP" defaultValue="now()">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="brands">
+            <column name="id" type="UUID" defaultValue="gen_random_uuid()">
+                <constraints primaryKey="true" unique="true" nullable="false"/>
+            </column>
+            <column name="name" type="varchar(25)">
+                <constraints unique="true" nullable="false"/>
+            </column>
+            <column name="status" type="varchar(25)" defaultValue="ACTIVE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created" type="TIMESTAMP" defaultValue="now()">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated" type="TIMESTAMP" defaultValue="now()">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="categories">
+            <column name="id" type="UUID" defaultValue="gen_random_uuid()">
+                <constraints primaryKey="true" unique="true" nullable="false"/>
+            </column>
+            <column name="name" type="varchar(25)">
+                <constraints unique="true" nullable="false"/>
+            </column>
+            <column name="status" type="varchar(25)" defaultValue="ACTIVE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created" type="TIMESTAMP" defaultValue="now()">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated" type="TIMESTAMP" defaultValue="now()">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="producers">
+            <column name="id" type="UUID" defaultValue="gen_random_uuid()">
+                <constraints primaryKey="true" unique="true" nullable="false"/>
+            </column>
+            <column name="name" type="varchar(25)">
+                <constraints unique="true" nullable="false"/>
+            </column>
+            <column name="status" type="varchar(25)" defaultValue="ACTIVE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created" type="TIMESTAMP" defaultValue="now()">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated" type="TIMESTAMP" defaultValue="now()">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="cities">
+            <column name="id" type="UUID" defaultValue="gen_random_uuid()">
+                <constraints primaryKey="true" unique="true" nullable="false"/>
+            </column>
+            <column name="name" type="varchar(25)">
+                <constraints unique="true" nullable="false"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="stores">
+            <column name="id" type="UUID" defaultValue="gen_random_uuid()">
+                <constraints primaryKey="true" unique="true" nullable="false"/>
+            </column>
+            <column name="name" type="varchar(25)">
+                <constraints unique="true" nullable="false"/>
+            </column>
+        </createTable>
+
+    </changeSet>
+
+</databaseChangeLog>

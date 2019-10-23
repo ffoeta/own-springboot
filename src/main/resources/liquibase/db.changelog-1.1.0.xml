@@ -1,0 +1,46 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+    <changeSet id="1.1.0" author="lyachko">
+
+        <createTable tableName="user_roles">
+            <column name="user_id" type="UUID" />
+            <column name="role_id" type="UUID" />
+        </createTable>
+
+    </changeSet>
+
+    <changeSet id="1.1.1" author="lyachko">
+
+        <createTable tableName="item_details">
+            <column name="item_id" type="UUID" />
+            <column name="details_id" type="UUID" />
+        </createTable>
+
+        <createTable tableName="item_categories">
+            <column name="item_id" type="UUID" />
+            <column name="category_id" type="UUID" />
+        </createTable>
+
+        <createTable tableName="item_brands">
+            <column name="item_id" type="UUID" />
+            <column name="brand_id" type="UUID" />
+        </createTable>
+
+        <createTable tableName="details_producers">
+            <column name="details_id" type="UUID" />
+            <column name="producer_id" type="UUID" />
+        </createTable>
+
+    </changeSet>
+
+    <changeSet id="1.1.2" author="lyachko">
+        <createTable tableName="city_stores">
+            <column name="city_id" type="UUID" />
+            <column name="store_id" type="UUID" />
+        </createTable>
+    </changeSet>
+
+</databaseChangeLog>

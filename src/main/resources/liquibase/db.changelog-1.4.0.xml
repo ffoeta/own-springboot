@@ -1,0 +1,114 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+
+    <changeSet id="1.4.0" author="lyachko">
+        <insert tableName="items">
+            <column name="id" value="a2f5d9af-d88f-4b33-ac97-b51729e79273"/>
+            <column name="name" value="test1"/>
+        </insert>
+        <insert tableName="items">
+            <column name="id" value="766ce7ca-784b-4556-bc69-ab96d90fe65f"/>
+            <column name="name" value="test2"/>
+        </insert>
+        <insert tableName="items">
+            <column name="id" value="8075eabb-ba23-42bc-b3f0-01108851f267"/>
+            <column name="name" value="test3"/>
+        </insert>
+        <insert tableName="items">
+            <column name="id" value="b8de46c7-5598-4d69-91ee-bc6acce78aad"/>
+            <column name="name" value="test4"/>
+        </insert>
+        <insert tableName="items">
+            <column name="id" value="5b03b488-44ca-4412-b527-f47e3e4d32d4"/>
+            <column name="name" value="test5"/>
+        </insert>
+    </changeSet>
+
+
+    <changeSet id="1.4.1" author="lyachko">
+        <insert tableName="details">
+            <column name="id" value="01439683-eaea-4456-87f4-34c7dca503cd"/>
+            <column name="price" value="1"/>
+            <column name="camera_f" value="1"/>
+            <column name="camera_b" value="1"/>
+            <column name="cpu" value="test1"/>
+            <column name="gpu" value="test1"/>
+            <column name="nfc" value="test1"/>
+            <column name="condition" value="test1"/>
+            <column name="screen" value="1"/>
+            <column name="diagonal" value="1"/>
+            <column name="notes" value="test1"/>
+            <column name="status" value="ACTIVE"/>
+            <column name="created" value="now()"/>
+            <column name="updated" value="now()"/>
+        </insert>
+        <insert tableName="details">
+            <column name="id" value="28aeb266-b634-4839-98b8-181b6980e966"/>
+            <column name="price" value="2"/>
+            <column name="camera_f" value="2"/>
+            <column name="camera_b" value="2"/>
+            <column name="cpu" value="test2"/>
+            <column name="gpu" value="test2"/>
+            <column name="nfc" value="test2"/>
+            <column name="condition" value="test2"/>
+            <column name="screen" value="2"/>
+            <column name="diagonal" value="2"/>
+            <column name="notes" value="test2"/>
+            <column name="status" value="ACTIVE"/>
+            <column name="created" value="now()"/>
+            <column name="updated" value="now()"/>
+        </insert>
+        <insert tableName="details">
+            <column name="id" value="f98c3cf3-4339-4a61-b68d-521b392c91c5"/>
+            <column name="price" value="3"/>
+            <column name="camera_f" value="3"/>
+            <column name="camera_b" value="3"/>
+            <column name="cpu" value="test3"/>
+            <column name="gpu" value="test3"/>
+            <column name="nfc" value="test3"/>
+            <column name="condition" value="test3"/>
+            <column name="screen" value="3"/>
+            <column name="diagonal" value="3"/>
+            <column name="notes" value="test3"/>
+            <column name="status" value="ACTIVE"/>
+            <column name="created" value="now()"/>
+            <column name="updated" value="now()"/>
+        </insert>
+        <insert tableName="details">
+            <column name="id" value="c22bc454-5f97-4dc0-8212-18ce6499255a"/>
+            <column name="price" value="4"/>
+            <column name="camera_f" value="4"/>
+            <column name="camera_b" value="4"/>
+            <column name="cpu" value="test4"/>
+            <column name="gpu" value="test4"/>
+            <column name="nfc" value="test4"/>
+            <column name="condition" value="test4"/>
+            <column name="screen" value="4"/>
+            <column name="diagonal" value="4"/>
+            <column name="notes" value="test4"/>
+            <column name="status" value="ACTIVE"/>
+            <column name="created" value="now()"/>
+            <column name="updated" value="now()"/>
+        </insert>
+        <insert tableName="details">
+            <column name="id" value="4e94a681-013a-4172-8da1-ec89ce2c0bcb"/>
+            <column name="price" value="5"/>
+            <column name="camera_f" value="5"/>
+            <column name="camera_b" value="5"/>
+            <column name="cpu" value="test5"/>
+            <column name="gpu" value="test5"/>
+            <column name="nfc" value="test5"/>
+            <column name="condition" value="test5"/>
+            <column name="screen" value="5"/>
+            <column name="diagonal" value="5"/>
+            <column name="notes" value="test5"/>
+            <column name="status" value="ACTIVE"/>
+            <column name="created" value="now()"/>
+            <column name="updated" value="now()"/>
+        </insert>
+    </changeSet>
+
+</databaseChangeLog>

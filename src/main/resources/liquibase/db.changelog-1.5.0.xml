@@ -1,0 +1,109 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+<changeSet id="1.5.0" author="lyachko">
+    <insert tableName="item_categories">
+        <column name="item_id" value="a2f5d9af-d88f-4b33-ac97-b51729e79273"/>
+        <column name="category_id" value="d97ada2d-43ab-4e95-923c-3dec0367b465"/>
+    </insert>
+    <insert tableName="item_categories">
+        <column name="item_id" value="766ce7ca-784b-4556-bc69-ab96d90fe65f"/>
+        <column name="category_id" value="a68f0ea7-6737-4d89-b150-1b0ba8710fa2"/>
+    </insert>
+    <insert tableName="item_categories">
+        <column name="item_id" value="8075eabb-ba23-42bc-b3f0-01108851f267"/>
+        <column name="category_id" value="d97ada2d-43ab-4e95-923c-3dec0367b465"/>
+    </insert>
+    <insert tableName="item_categories">
+        <column name="item_id" value="b8de46c7-5598-4d69-91ee-bc6acce78aad"/>
+        <column name="category_id" value="4ba0e380-b73b-490f-b23d-54c83efbb0fd"/>
+    </insert>
+    <insert tableName="item_categories">
+        <column name="item_id" value="5b03b488-44ca-4412-b527-f47e3e4d32d4"/>
+        <column name="category_id" value="3ee94057-5e6f-45e9-9f68-882db6ff8857"/>
+    </insert>
+</changeSet>
+
+    <changeSet id="1.5.1" author="lyachko">
+        <insert tableName="item_brands">
+            <column name="item_id" value="a2f5d9af-d88f-4b33-ac97-b51729e79273"/>
+            <column name="brand_id" value="8c08b443-caf4-41c9-9feb-eafb6bb5bdc7"/>
+        </insert>
+        <insert tableName="item_brands">
+            <column name="item_id" value="766ce7ca-784b-4556-bc69-ab96d90fe65f"/>
+            <column name="brand_id" value="87ec548f-8d13-422b-9689-be6e990e7b4b"/>
+        </insert>
+        <insert tableName="item_brands">
+            <column name="item_id" value="8075eabb-ba23-42bc-b3f0-01108851f267"/>
+            <column name="brand_id" value="87ec548f-8d13-422b-9689-be6e990e7b4b"/>
+        </insert>
+        <insert tableName="item_brands">
+            <column name="item_id" value="b8de46c7-5598-4d69-91ee-bc6acce78aad"/>
+            <column name="brand_id" value="9bef7877-0feb-40a1-98f8-104bdadbaa8c"/>
+        </insert>
+        <insert tableName="item_brands">
+            <column name="item_id" value="5b03b488-44ca-4412-b527-f47e3e4d32d4"/>
+            <column name="brand_id" value="8c08b443-caf4-41c9-9feb-eafb6bb5bdc7"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="1.5.2" author="lyachko">
+        <insert tableName="item_details">
+            <column name="item_id" value="a2f5d9af-d88f-4b33-ac97-b51729e79273"/>
+            <column name="details_id" value="f98c3cf3-4339-4a61-b68d-521b392c91c5"/>
+        </insert>
+        <insert tableName="item_details">
+            <column name="item_id" value="766ce7ca-784b-4556-bc69-ab96d90fe65f"/>
+            <column name="details_id" value="4e94a681-013a-4172-8da1-ec89ce2c0bcb"/>
+        </insert>
+        <insert tableName="item_details">
+            <column name="item_id" value="8075eabb-ba23-42bc-b3f0-01108851f267"/>
+            <column name="details_id" value="01439683-eaea-4456-87f4-34c7dca503cd"/>
+        </insert>
+        <insert tableName="item_details">
+            <column name="item_id" value="b8de46c7-5598-4d69-91ee-bc6acce78aad"/>
+            <column name="details_id" value="c22bc454-5f97-4dc0-8212-18ce6499255a"/>
+        </insert>
+        <insert tableName="item_details">
+            <column name="item_id" value="5b03b488-44ca-4412-b527-f47e3e4d32d4"/>
+            <column name="details_id" value="28aeb266-b634-4839-98b8-181b6980e966"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="1.5.3" author="lyachko">
+        <insert tableName="details_producers">
+            <column name="producer_id" value="eefa5ffa-995d-4f3e-bd1a-5184f08fa173"/>
+            <column name="details_id" value="f98c3cf3-4339-4a61-b68d-521b392c91c5"/>
+        </insert>
+        <insert tableName="details_producers">
+            <column name="producer_id" value="eefa5ffa-995d-4f3e-bd1a-5184f08fa173"/>
+            <column name="details_id" value="4e94a681-013a-4172-8da1-ec89ce2c0bcb"/>
+        </insert>
+        <insert tableName="details_producers">
+            <column name="producer_id" value="eefa5ffa-995d-4f3e-bd1a-5184f08fa173"/>
+            <column name="details_id" value="01439683-eaea-4456-87f4-34c7dca503cd"/>
+        </insert>
+        <insert tableName="details_producers">
+            <column name="producer_id" value="eefa5ffa-995d-4f3e-bd1a-5184f08fa173"/>
+            <column name="details_id" value="c22bc454-5f97-4dc0-8212-18ce6499255a"/>
+        </insert>
+        <insert tableName="details_producers">
+            <column name="producer_id" value="2a151358-6bbf-4068-a386-40040951d6c1"/>
+            <column name="details_id" value="28aeb266-b634-4839-98b8-181b6980e966"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="1.5.4" author="lyachko">
+        <insert tableName="city_stores">
+            <column name="city_id" value="57d09044-7b22-4ed7-9f1e-d1ae6159d42b"/>
+            <column name="store_id" value="664dcc62-1a39-4391-bc1a-8a1120922490"/>
+        </insert>
+        <insert tableName="city_stores">
+            <column name="city_id" value="57d09044-7b22-4ed7-9f1e-d1ae6159d42b"/>
+            <column name="store_id" value="8a20be5e-1c90-46a3-94bf-1c2e59021ea9"/>
+        </insert>
+    </changeSet>
+
+</databaseChangeLog>

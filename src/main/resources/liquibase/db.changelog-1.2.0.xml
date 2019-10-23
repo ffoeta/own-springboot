@@ -1,0 +1,115 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+<changeSet id="1.2.0" author="lyachko">
+
+    <!--    USERS, ROLES    -->
+
+    <addForeignKeyConstraint baseColumnNames="role_id"
+                                 baseTableName="user_roles"
+                                 constraintName="fk_user_roles_role"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="id"
+                                 referencedTableName="roles"/>
+
+        <addForeignKeyConstraint baseColumnNames="user_id"
+                                 baseTableName="user_roles"
+                                 constraintName="fk_user_roles_user"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="id"
+                                 referencedTableName="users"/>
+</changeSet>
+
+    <changeSet id="1.2.1" author="lyachko">
+
+
+    <!--    DETAILS, PRODUCETS    -->
+
+
+        <addForeignKeyConstraint baseColumnNames="details_id"
+                                 baseTableName="details_producers"
+                                 constraintName="fk_details_producers_details"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="id"
+                                 referencedTableName="details"/>
+
+        <addForeignKeyConstraint baseColumnNames="producer_id"
+                                 baseTableName="details_producers"
+                                 constraintName="fk_details_producers_producer"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="id"
+                                 referencedTableName="producers"/>
+    </changeSet>
+
+    <!--    Items, details,     -->
+
+    <changeSet id="1.2.2" author="lyachko">
+        <addForeignKeyConstraint baseColumnNames="item_id"
+                                 baseTableName="item_details"
+                                 constraintName="fk_item_details_item"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="id"
+                                 referencedTableName="items"/>
+
+        <addForeignKeyConstraint baseColumnNames="details_id"
+                                 baseTableName="item_details"
+                                 constraintName="fk_item_details_details"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="id"
+                                 referencedTableName="details"/>
+
+        <!--      Items,  categories     -->
+
+        <addForeignKeyConstraint baseColumnNames="item_id"
+                                 baseTableName="item_categories"
+                                 constraintName="fk_item_categories_item"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="id"
+                                 referencedTableName="items"/>
+
+        <addForeignKeyConstraint baseColumnNames="category_id"
+                                 baseTableName="item_categories"
+                                 constraintName="fk_item_categories_category"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="id"
+                                 referencedTableName="categories"/>
+
+
+        <!--      Items,  brands         -->
+
+        <addForeignKeyConstraint baseColumnNames="item_id"
+                                 baseTableName="item_brands"
+                                 constraintName="fk_item_brands_item"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="id"
+                                 referencedTableName="items"/>
+
+        <addForeignKeyConstraint baseColumnNames="brand_id"
+                                 baseTableName="item_brands"
+                                 constraintName="fk_item_brands_brand"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="id"
+                                 referencedTableName="brands"/>
+
+        <!--                -->
+
+
+
+    </changeSet>
+
+</databaseChangeLog>
+
+
+
