@@ -1,4 +1,4 @@
-package com.spring.service;
+package com.spring.service.interfaces;
 
 import com.spring.model.Category;
 
@@ -9,6 +9,8 @@ public interface CategoryService {
     Category findByName(String name);
 
     Category save(Category product);
+
+    Category update(Category category);
 
     Category findById(UUID id);
 

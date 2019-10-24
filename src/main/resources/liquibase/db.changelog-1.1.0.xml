@@ -29,11 +29,6 @@
             <column name="brand_id" type="UUID" />
         </createTable>
 
-        <createTable tableName="details_producers">
-            <column name="details_id" type="UUID" />
-            <column name="producer_id" type="UUID" />
-        </createTable>
-
     </changeSet>
 
     <changeSet id="1.1.2" author="lyachko">

@@ -2,11 +2,12 @@ package com.spring.service.Implementations;
 
 import com.spring.model.Brand;
 import com.spring.repository.BrandRepository;
-import com.spring.service.BrandService;
+import com.spring.service.interfaces.BrandService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.UUID;
 
 
@@ -29,6 +30,12 @@ public class BrandServiceImpl implements BrandService {
     @Override
     public Brand save(Brand brand) {
         return brandRepository.save(brand);
+    }
+
+    @Override
+    public Brand update(Brand brand) {
+        brand.setUpdated(new Date());
+        return save(brand);
     }
 
     @Override

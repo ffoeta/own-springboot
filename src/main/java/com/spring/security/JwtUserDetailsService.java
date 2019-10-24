@@ -3,7 +3,7 @@ package com.spring.security;
 import com.spring.model.User;
 import com.spring.security.jwt.JwtUser;
 import com.spring.security.jwt.JwtUserFactory;
-import com.spring.service.UserService;
+import com.spring.service.interfaces.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;

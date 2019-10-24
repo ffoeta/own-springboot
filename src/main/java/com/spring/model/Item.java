@@ -12,7 +12,8 @@ public class Item extends BaseEntity {
     private String name;
 
     @OneToOne(fetch = FetchType.EAGER)
-    @JoinTable(name = "item_details", joinColumns = {@JoinColumn(name = "item_id", referencedColumnName = "id")},
+    @JoinTable(name = "item_details",
+            joinColumns = {@JoinColumn(name = "item_id", referencedColumnName = "id")},
             inverseJoinColumns = {@JoinColumn(name = "details_id", referencedColumnName = "id")})
     ItemDetails details;
 

@@ -72,30 +72,8 @@
         </insert>
     </changeSet>
 
-    <changeSet id="1.5.3" author="lyachko">
-        <insert tableName="details_producers">
-            <column name="producer_id" value="eefa5ffa-995d-4f3e-bd1a-5184f08fa173"/>
-            <column name="details_id" value="f98c3cf3-4339-4a61-b68d-521b392c91c5"/>
-        </insert>
-        <insert tableName="details_producers">
-            <column name="producer_id" value="eefa5ffa-995d-4f3e-bd1a-5184f08fa173"/>
-            <column name="details_id" value="4e94a681-013a-4172-8da1-ec89ce2c0bcb"/>
-        </insert>
-        <insert tableName="details_producers">
-            <column name="producer_id" value="eefa5ffa-995d-4f3e-bd1a-5184f08fa173"/>
-            <column name="details_id" value="01439683-eaea-4456-87f4-34c7dca503cd"/>
-        </insert>
-        <insert tableName="details_producers">
-            <column name="producer_id" value="eefa5ffa-995d-4f3e-bd1a-5184f08fa173"/>
-            <column name="details_id" value="c22bc454-5f97-4dc0-8212-18ce6499255a"/>
-        </insert>
-        <insert tableName="details_producers">
-            <column name="producer_id" value="2a151358-6bbf-4068-a386-40040951d6c1"/>
-            <column name="details_id" value="28aeb266-b634-4839-98b8-181b6980e966"/>
-        </insert>
-    </changeSet>
 
-    <changeSet id="1.5.4" author="lyachko">
+    <changeSet id="1.5.3" author="lyachko">
         <insert tableName="city_stores">
             <column name="city_id" value="57d09044-7b22-4ed7-9f1e-d1ae6159d42b"/>
             <column name="store_id" value="664dcc62-1a39-4391-bc1a-8a1120922490"/>

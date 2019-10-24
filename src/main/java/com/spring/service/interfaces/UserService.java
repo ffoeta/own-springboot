@@ -1,4 +1,4 @@
-package com.spring.service;
+package com.spring.service.interfaces;
 
 import com.spring.model.User;
 
@@ -7,6 +7,8 @@ import java.util.UUID;
 
 public interface UserService {
     User register(User user, String ROLE);
+
+    User update(User user);
 
     User findByUsername(String username);
 

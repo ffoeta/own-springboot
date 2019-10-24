@@ -16,6 +16,10 @@
 
     <changeSet id="1.3.1" author="lyachko">
         <insert tableName="brands">
+            <column name="name" value="none"/>
+            <column name="id" value="37d09b2e-f67e-11e9-802a-5aa538984bd8"/>
+        </insert>
+        <insert tableName="brands">
             <column name="name" value="apple"/>
             <column name="id" value="8c08b443-caf4-41c9-9feb-eafb6bb5bdc7"/>
         </insert>
@@ -35,15 +39,19 @@
 
     <changeSet id="1.3.2" author="lyachko">
         <insert tableName="categories">
-            <column name="name" value="smartphone"/>
+            <column name="name" value="none"/>
+            <column name="id" value="37d09fac-f67e-11e9-802a-5aa538984bd8"/>
+        </insert>
+        <insert tableName="categories">
+            <column name="name" value="smartphones"/>
             <column name="id" value="d97ada2d-43ab-4e95-923c-3dec0367b465"/>
         </insert>
         <insert tableName="categories">
-            <column name="name" value="smartwatch"/>
+            <column name="name" value="smartwatches"/>
             <column name="id" value="2c625960-bc25-424b-8597-90503c768a45"/>
         </insert>
         <insert tableName="categories">
-            <column name="name" value="console"/>
+            <column name="name" value="consoles"/>
             <column name="id" value="a68f0ea7-6737-4d89-b150-1b0ba8710fa2"/>
         </insert>
         <insert tableName="categories">
@@ -51,7 +59,7 @@
             <column name="id" value="5888bc7a-27bd-4ae2-90c8-e696e101b662"/>
         </insert>
         <insert tableName="categories">
-            <column name="name" value="tv"/>
+            <column name="name" value="tvs"/>
             <column name="id" value="55f53fbf-7f65-4943-8796-1ecb60109bc9"/>
         </insert>
         <insert tableName="categories">
@@ -83,21 +91,6 @@
         <insert tableName="stores">
             <column name="name" value="castle"/>
             <column name="id" value="8a20be5e-1c90-46a3-94bf-1c2e59021ea9"/>
-        </insert>
-    </changeSet>
-
-    <changeSet id="1.3.5" author="lyachko">
-        <insert tableName="producers">
-            <column name="name" value="china"/>
-            <column name="id" value="eefa5ffa-995d-4f3e-bd1a-5184f08fa173"/>
-        </insert>
-        <insert tableName="producers">
-            <column name="name" value="usa"/>
-            <column name="id" value="34d607dc-6c6a-45a3-89e4-4cb09f637916"/>
-        </insert>
-        <insert tableName="producers">
-            <column name="name" value="uk"/>
-            <column name="id" value="2a151358-6bbf-4068-a386-40040951d6c1"/>
         </insert>
     </changeSet>
 

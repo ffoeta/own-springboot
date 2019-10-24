@@ -1,4 +1,4 @@
-package com.spring.service;
+package com.spring.service.interfaces;
 
 import com.spring.model.Item;
 import com.spring.model.ItemDetails;

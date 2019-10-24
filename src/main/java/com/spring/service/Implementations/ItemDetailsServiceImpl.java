@@ -2,7 +2,7 @@ package com.spring.service.Implementations;
 
 import com.spring.model.*;
 import com.spring.repository.*;
-import com.spring.service.ItemDetailsService;
+import com.spring.service.interfaces.ItemDetailsService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,20 +17,17 @@ public class ItemDetailsServiceImpl implements ItemDetailsService {
 
     private final ItemDetailsRepository itemDetailsRepository;
     private final ItemRepository itemRepository;
-    private final ProducerRepository producerRepository;
 
     @Autowired
-    public ItemDetailsServiceImpl(ItemDetailsRepository itemDetailsRepository, ItemRepository itemRepository, ProducerRepository producerRepository, BrandRepository brandRepository, CategoryRepository categoryRepository) {
+    public ItemDetailsServiceImpl(ItemDetailsRepository itemDetailsRepository, ItemRepository itemRepository, BrandRepository brandRepository, CategoryRepository categoryRepository) {
         this.itemDetailsRepository = itemDetailsRepository;
         this.itemRepository = itemRepository;
-        this.producerRepository = producerRepository;
     }
 
     @Override
     public ItemDetails save(ItemDetails itemDetails, Item item) {
         Item itemTmp = itemRepository.findById(item.getId()).orElse(null);
-        Producer producerTmp = producerRepository.findByName(itemDetails.getProducer().getName());
-        if ((itemTmp == null) || (item.getId() == null) || (producerTmp.getId() == null)) {
+        if ((itemTmp == null) || (item.getId() == null)) {
             return null;
         }
 

@@ -5,12 +5,11 @@ import com.spring.model.ItemDetails;
 import com.spring.model.Status;
 import com.spring.repository.ItemDetailsRepository;
 import com.spring.repository.ItemRepository;
-import com.spring.service.ItemService;
+import com.spring.service.interfaces.ItemService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
@@ -29,16 +28,42 @@ public class ItemServiceImpl implements ItemService {
     }
 
     @Override
-    public Item save(Item item) {
+    public Item save(Item item){
+
+        ItemDetails itemDetails = new ItemDetails();
 
         item.setId(UUID.randomUUID());
         item.setStatus(Status.ACTIVE);
 
+        itemDetails.setId(UUID.randomUUID());
+        itemDetails.setStatus(Status.ACTIVE);
+
         Date date = new Date();
+
         item.setCreated(date);
         item.setUpdated(date);
 
-        return itemRepository.save(item);
+        itemDetails.setCreated(date);
+        itemDetails.setUpdated(date);
+
+        itemDetailsRepository.save(itemDetails);
+        itemRepository.save(item);
+
+        Item itemTmp = itemRepository.findById(item.getId()).orElse(null);
+        ItemDetails itemDetailsTmp = itemDetailsRepository.findById(itemDetails.getId()).orElse(null);
+
+        itemTmp.setDetails(itemDetails);
+        itemDetailsTmp.setItem(item);
+
+        itemDetailsRepository.save(itemDetails);
+
+        return itemRepository.save(itemTmp);
+    }
+
+    @Override
+    public Item update(Item item) {
+        item.setUpdated(new Date());
+        return save(item);
     }
 
     @Override

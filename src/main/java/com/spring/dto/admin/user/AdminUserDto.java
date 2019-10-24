@@ -1,4 +1,4 @@
-package com.spring.dto.admin;
+package com.spring.dto.admin.user;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.spring.model.Status;
@@ -12,21 +12,25 @@ import java.util.UUID;
 public class AdminUserDto {
     private UUID id;
     private String username;
-    private String status;
+    private Status status;
 
     public User toUser() {
         User user = new User();
+
         user.setId(id);
         user.setUsername(username);
-        user.setStatus(Status.valueOf(status));
+        user.setStatus(status);
+
         return user;
     }
 
     public static AdminUserDto fromUser(User user) {
         AdminUserDto adminUserDto = new AdminUserDto();
+
         adminUserDto.setId(user.getId());
         adminUserDto.setUsername(user.getUsername());
-        adminUserDto.setStatus(user.getStatus().name());
+        adminUserDto.setStatus(user.getStatus());
+
         return adminUserDto;
     }
 }

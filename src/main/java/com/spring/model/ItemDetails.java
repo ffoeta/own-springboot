@@ -1,5 +1,6 @@
 package com.spring.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -11,8 +12,12 @@ import java.util.UUID;
 @Data
 public class ItemDetails extends BaseEntity {
 
+    @JsonIgnore
+    @Id
+    private UUID id;
+
     @Column(name = "price")
-    private String price;
+    private int price;
 
     @Column(name = "camera_f")
     private String camera_f;
@@ -38,11 +43,7 @@ public class ItemDetails extends BaseEntity {
     @Column(name = "notes")
     private String notes;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinTable(name = "details_producers", joinColumns = {@JoinColumn(name = "details_id", referencedColumnName = "id")},
-            inverseJoinColumns = {@JoinColumn(name = "producer_id", referencedColumnName = "id")})
-    Producer producer;
-
+    @JsonIgnore
     @OneToOne(mappedBy = "details", fetch = FetchType.LAZY)
     Item item;
 

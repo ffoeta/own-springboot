@@ -1,4 +1,4 @@
-package com.spring.service;
+package com.spring.service.interfaces;
 
 import com.spring.model.Item;
 
@@ -7,6 +7,8 @@ import java.util.UUID;
 
 public interface ItemService {
     Item save(Item item);
+
+    Item update(Item item);
 
     Item findByName(String name);
 

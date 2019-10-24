@@ -5,7 +5,7 @@ import com.spring.model.Status;
 import com.spring.model.User;
 import com.spring.repository.RoleRepository;
 import com.spring.repository.UserRepository;
-import com.spring.service.UserService;
+import com.spring.service.interfaces.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -45,6 +45,12 @@ public class UserServiceImpl implements UserService {
         user.setUpdated(date);
         userRepository.save(user);
         return user;
+    }
+
+    @Override
+    public User update(User user) {
+        user.setUpdated(new Date());
+        return userRepository.save(user);
     }
 
     @Override

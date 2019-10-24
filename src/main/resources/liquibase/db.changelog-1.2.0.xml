@@ -24,32 +24,9 @@
                                  referencedTableName="users"/>
 </changeSet>
 
-    <changeSet id="1.2.1" author="lyachko">
-
-
-    <!--    DETAILS, PRODUCETS    -->
-
-
-        <addForeignKeyConstraint baseColumnNames="details_id"
-                                 baseTableName="details_producers"
-                                 constraintName="fk_details_producers_details"
-                                 onDelete="CASCADE"
-                                 onUpdate="RESTRICT"
-                                 referencedColumnNames="id"
-                                 referencedTableName="details"/>
-
-        <addForeignKeyConstraint baseColumnNames="producer_id"
-                                 baseTableName="details_producers"
-                                 constraintName="fk_details_producers_producer"
-                                 onDelete="CASCADE"
-                                 onUpdate="RESTRICT"
-                                 referencedColumnNames="id"
-                                 referencedTableName="producers"/>
-    </changeSet>
-
     <!--    Items, details,     -->
 
-    <changeSet id="1.2.2" author="lyachko">
+    <changeSet id="1.2.1" author="lyachko">
         <addForeignKeyConstraint baseColumnNames="item_id"
                                  baseTableName="item_details"
                                  constraintName="fk_item_details_item"
@@ -104,8 +81,6 @@
                                  referencedTableName="brands"/>
 
         <!--                -->
-
-
 
     </changeSet>
 

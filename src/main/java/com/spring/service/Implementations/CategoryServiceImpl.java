@@ -2,11 +2,12 @@ package com.spring.service.Implementations;
 
 import com.spring.model.Category;
 import com.spring.repository.CategoryRepository;
-import com.spring.service.CategoryService;
+import com.spring.service.interfaces.CategoryService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.UUID;
 
 
@@ -29,6 +30,12 @@ public class CategoryServiceImpl implements CategoryService {
     @Override
     public Category save(Category category) {
         return categoryRepository.save(category);
+    }
+
+    @Override
+    public Category update(Category category) {
+        category.setUpdated(new Date());
+        return save(category);
     }
 
     @Override

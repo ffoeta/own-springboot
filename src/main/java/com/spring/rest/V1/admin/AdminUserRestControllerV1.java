@@ -1,9 +1,9 @@
 package com.spring.rest.V1.admin;
 
-import com.spring.dto.admin.AdminUserDto;
-import com.spring.dto.ByIdRequestDto;
+import com.spring.dto.admin.user.AdminUserDto;
+import com.spring.dto.open.ByIdRequestDto;
 import com.spring.model.User;
-import com.spring.service.UserService;
+import com.spring.service.interfaces.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,12 +22,12 @@ import java.util.UUID;
 
 @RestController
 @RequestMapping(value = "/api/v1/admin/")
-public class AdminRestControllerV1 {
+public class AdminUserRestControllerV1 {
 
     private final UserService userService;
 
     @Autowired
-    public AdminRestControllerV1(UserService userService) {
+    public AdminUserRestControllerV1(UserService userService) {
         this.userService = userService;
     }
 
@@ -45,7 +45,7 @@ public class AdminRestControllerV1 {
     }
 
     @GetMapping(value = "users")
-    public ResponseEntity<List<AdminUserDto>> getUsers() {
+    public ResponseEntity getUsers() {
         List<User> users = userService.getAll();
 
         List<AdminUserDto> result = new ArrayList<>();
@@ -53,6 +53,7 @@ public class AdminRestControllerV1 {
         if (users.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
+
         users.forEach(user -> {
             result.add(AdminUserDto.fromUser(user));
         });
