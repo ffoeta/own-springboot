@@ -1,9 +1,8 @@
-package com.spring.dto.admin.item;
+package com.spring.dto.V1.admin.item;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.spring.model.Item;
-import com.spring.model.ItemDetails;
-import com.spring.model.Status;
+import com.spring.model.enums.Status;
 import lombok.Data;
 
 import java.util.Date;
@@ -11,13 +10,13 @@ import java.util.UUID;
 
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class AdminItemDto {
+public class AdminItemDtoV1 {
 
     private UUID id;
     private String name;
-    private AdminCategoryDto category;
-    private AdminBrandDto brand;
-    private AdminItemDetailsDto details;
+    private AdminCategoryDtoV1 category;
+    private AdminBrandDtoV1 brand;
+    private AdminItemDetailsDtoV1 details;
 
     private Date created;
     private Date updated;
@@ -35,14 +34,14 @@ public class AdminItemDto {
         return item;
     }
 
-    public static AdminItemDto from(Item item){
-        AdminItemDto itemDto = new AdminItemDto();
+    public static AdminItemDtoV1 from(Item item){
+        AdminItemDtoV1 itemDto = new AdminItemDtoV1();
 
         itemDto.setId(item.getId());
         itemDto.setName(item.getName());
-        itemDto.setCategory(AdminCategoryDto.from(item.getCategory()));
-        itemDto.setBrand(AdminBrandDto.from(item.getBrand()));
-        itemDto.setDetails(AdminItemDetailsDto.from(item.getDetails()));
+        itemDto.setCategory(AdminCategoryDtoV1.from(item.getCategory()));
+        itemDto.setBrand(AdminBrandDtoV1.from(item.getBrand()));
+        itemDto.setDetails(AdminItemDetailsDtoV1.from(item.getDetails()));
         itemDto.setCreated(item.getCreated());
         item.setUpdated(item.getUpdated());
         item.setStatus(item.getStatus());

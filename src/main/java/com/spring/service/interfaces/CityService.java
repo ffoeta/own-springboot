@@ -2,6 +2,7 @@ package com.spring.service.interfaces;
 
 import com.spring.model.City;
 
+import java.util.List;
 import java.util.UUID;
 
 public interface CityService {
@@ -13,6 +14,8 @@ public interface CityService {
     City update(City city);
 
     City findById(UUID id);
+
+    List<City> getAll();
 
     void deleteById(UUID id);
 }

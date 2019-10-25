@@ -1,4 +1,4 @@
-package com.spring.model;
+package com.spring.model.enums;
 
 public enum Status {
     ACTIVE,

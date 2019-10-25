@@ -1,7 +1,7 @@
 package com.spring.model;
 
+import com.spring.model.enums.Status;
 import lombok.Data;
-import org.apache.tomcat.jni.Time;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 

@@ -1,16 +1,17 @@
-package com.spring.dto.admin.item;
+package com.spring.dto.V2.admin;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.spring.model.City;
 import com.spring.model.ItemDetails;
-import com.spring.model.Status;
+import com.spring.model.enums.Status;
 import lombok.Data;
 
 import java.util.UUID;
 
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class AdminItemDetailsDto {
+public class AdminItemDetailsDtoV2 {
 
     @JsonIgnore
     private UUID id;
@@ -36,22 +37,22 @@ public class AdminItemDetailsDto {
     private Status status;
 
 
-    public static AdminItemDetailsDto from(ItemDetails itemDetails) {
-        AdminItemDetailsDto adminItemDetailsDto = new AdminItemDetailsDto();
+    public static AdminItemDetailsDtoV2 from(ItemDetails itemDetails) {
+        AdminItemDetailsDtoV2 adminItemDetailsDtoV2 = new AdminItemDetailsDtoV2();
 
-        adminItemDetailsDto.setId(itemDetails.getId());
-        adminItemDetailsDto.setPrice(itemDetails.getPrice());
-        adminItemDetailsDto.setCamera_f(itemDetails.getCamera_f());
-        adminItemDetailsDto.setCamera_b(itemDetails.getCamera_b());
-        adminItemDetailsDto.setCpu(itemDetails.getCpu());
-        adminItemDetailsDto.setGpu(itemDetails.getGpu());
-        adminItemDetailsDto.setNfc(itemDetails.getNfc());
-        adminItemDetailsDto.setDiagonal(itemDetails.getDiagonal());
-        adminItemDetailsDto.setNotes(itemDetails.getNotes());
-        adminItemDetailsDto.setStatus(itemDetails.getStatus());
+        adminItemDetailsDtoV2.setId(itemDetails.getId());
+        adminItemDetailsDtoV2.setPrice(itemDetails.getPrice());
+        adminItemDetailsDtoV2.setCamera_f(itemDetails.getCamera_f());
+        adminItemDetailsDtoV2.setCamera_b(itemDetails.getCamera_b());
+        adminItemDetailsDtoV2.setCpu(itemDetails.getCpu());
+        adminItemDetailsDtoV2.setGpu(itemDetails.getGpu());
+        adminItemDetailsDtoV2.setNfc(itemDetails.getNfc());
+        adminItemDetailsDtoV2.setDiagonal(itemDetails.getDiagonal());
+        adminItemDetailsDtoV2.setNotes(itemDetails.getNotes());
+        adminItemDetailsDtoV2.setStatus(itemDetails.getStatus());
 
 
-        return adminItemDetailsDto;
+        return adminItemDetailsDtoV2;
     }
 
     public ItemDetails to() {

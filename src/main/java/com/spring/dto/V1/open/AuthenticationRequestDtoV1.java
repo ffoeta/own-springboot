@@ -1,9 +1,9 @@
-package com.spring.dto.open;
+package com.spring.dto.V1.open;
 
 import lombok.Data;
 
 @Data
-public class AuthenticationRequestDto {
+public class AuthenticationRequestDtoV1 {
     private String username;
     private String password;
 }

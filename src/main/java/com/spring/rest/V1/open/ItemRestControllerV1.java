@@ -1,7 +1,7 @@
 package com.spring.rest.V1.open;
 
-import com.spring.dto.open.ByIdRequestDto;
-import com.spring.dto.open.item.ItemDto;
+import com.spring.dto.V1.open.ByIdRequestDtoV1;
+import com.spring.dto.V1.open.item.ItemDtoV1;
 import com.spring.model.Item;
 import com.spring.service.Implementations.ItemDetailsServiceImpl;
 import com.spring.service.Implementations.ItemServiceImpl;
@@ -31,18 +31,18 @@ public class ItemRestControllerV1 {
     public ResponseEntity getItems() {
         List<Item> items = itemService.getAll();
         System.out.println(items.size());
-        List<ItemDto> itemsDto = new ArrayList<>();
+        List<ItemDtoV1> itemsDto = new ArrayList<>();
         items.forEach(item -> {
-            itemsDto.add(ItemDto.fromItem(item));
+            itemsDto.add(ItemDtoV1.fromItem(item));
         });
         return ResponseEntity.ok(itemsDto);
     }
 
     @GetMapping("item")
-    public ResponseEntity geById(ByIdRequestDto byIdRequestDto) {
-        ItemDto itemDto = ItemDto.fromItem(itemService.findById(byIdRequestDto.getId()));
-        if (itemDto != null) {
-            return ResponseEntity.ok(itemDto);
+    public ResponseEntity geById(ByIdRequestDtoV1 byIdRequestDtoV1) {
+        ItemDtoV1 itemDtoV1 = ItemDtoV1.fromItem(itemService.findById(byIdRequestDtoV1.getId()));
+        if (itemDtoV1 != null) {
+            return ResponseEntity.ok(itemDtoV1);
         }
         return ResponseEntity.noContent().build();
     }

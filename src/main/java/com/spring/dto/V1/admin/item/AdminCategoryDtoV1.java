@@ -1,4 +1,4 @@
-package com.spring.dto.admin.item;
+package com.spring.dto.V1.admin.item;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.spring.model.Category;
@@ -9,20 +9,20 @@ import java.util.UUID;
 
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class AdminCategoryDto {
+public class AdminCategoryDtoV1 {
 
     @JsonIgnore
     private UUID id;
 
     private String name;
 
-    public static AdminCategoryDto from(Category category) {
-        AdminCategoryDto adminCategoryDto = new AdminCategoryDto();
+    public static AdminCategoryDtoV1 from(Category category) {
+        AdminCategoryDtoV1 adminCategoryDtoV1 = new AdminCategoryDtoV1();
 
-        adminCategoryDto.id = category.getId();
-        adminCategoryDto.name = category.getName();
+        adminCategoryDtoV1.id = category.getId();
+        adminCategoryDtoV1.name = category.getName();
 
-        return adminCategoryDto;
+        return adminCategoryDtoV1;
     }
 
     public Category to() {

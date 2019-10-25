@@ -1,4 +1,4 @@
-package com.spring.dto.open.item;
+package com.spring.dto.V1.open.item;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.spring.model.Item;
@@ -6,7 +6,7 @@ import lombok.Data;
 
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class ItemDto {
+public class ItemDtoV1 {
 
     private String name;
     private String category;
@@ -20,13 +20,13 @@ public class ItemDto {
         return item;
     }
 
-    public static ItemDto fromItem(Item item){
-        ItemDto itemDto = new ItemDto();
+    public static ItemDtoV1 fromItem(Item item){
+        ItemDtoV1 itemDtoV1 = new ItemDtoV1();
 
-        itemDto.setName(item.getName());
-        itemDto.setCategory(item.getCategory().getName());
-        itemDto.setBrand(item.getBrand().getName());
+        itemDtoV1.setName(item.getName());
+        itemDtoV1.setCategory(item.getCategory().getName());
+        itemDtoV1.setBrand(item.getBrand().getName());
 
-        return itemDto;
+        return itemDtoV1;
     }
 }

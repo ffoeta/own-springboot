@@ -3,6 +3,7 @@ package com.spring.model;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "items")
@@ -26,4 +27,7 @@ public class Item extends BaseEntity {
     @JoinTable(name = "item_brands", joinColumns = {@JoinColumn(name = "item_id", referencedColumnName = "id")},
             inverseJoinColumns = {@JoinColumn(name = "brand_id", referencedColumnName = "id")})
     Brand brand;
+
+    @ManyToMany(mappedBy = "items", fetch = FetchType.LAZY)
+    List<Order> orders;
 }

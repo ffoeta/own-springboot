@@ -1,0 +1,63 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+    <changeSet id="1.6.0" author="lyachko">
+
+        <createTable tableName="orders">
+            <column name="id" type="UUID" defaultValue="gen_random_uuid()">
+                <constraints primaryKey="true" unique="true" nullable="false"/>
+            </column>
+            <column name="name" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="user_id" type="UUID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="payed" type="number">
+                <constraints nullable="false"/>
+            </column>
+            <column name="delivery" type="VARCHAR(25)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="status" type="varchar(25)" defaultValue="ACTIVE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created" type="TIMESTAMP" defaultValue="now()">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated" type="TIMESTAMP" defaultValue="now()">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+    </changeSet>
+
+    <changeSet id="1.6.1" author="lyachko">
+
+        <createTable tableName="order_items">
+            <column name="order_id" type="UUID" />
+            <column name="item_id" type="UUID" />
+        </createTable>
+
+    </changeSet>
+
+    <changeSet id="1.6.2" author="lyachko">
+        <addForeignKeyConstraint baseColumnNames="order_id"
+                                 baseTableName="order_items"
+                                 constraintName="fk_order_items_order"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="id"
+                                 referencedTableName="orders"/>
+
+        <addForeignKeyConstraint baseColumnNames="item_id"
+                                 baseTableName="order_items"
+                                 constraintName="fk_order_items_item"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="id"
+                                 referencedTableName="items"/>
+    </changeSet>
+
+</databaseChangeLog>

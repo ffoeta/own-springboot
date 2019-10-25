@@ -2,7 +2,7 @@ package com.spring.service.Implementations;
 
 import com.spring.model.Item;
 import com.spring.model.ItemDetails;
-import com.spring.model.Status;
+import com.spring.model.enums.Status;
 import com.spring.repository.ItemDetailsRepository;
 import com.spring.repository.ItemRepository;
 import com.spring.service.interfaces.ItemService;
@@ -63,7 +63,7 @@ public class ItemServiceImpl implements ItemService {
     @Override
     public Item update(Item item) {
         item.setUpdated(new Date());
-        return save(item);
+        return itemRepository.save(item);
     }
 
     @Override

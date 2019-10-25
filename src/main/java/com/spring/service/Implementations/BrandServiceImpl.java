@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
+import java.util.List;
 import java.util.UUID;
 
 
@@ -36,6 +37,11 @@ public class BrandServiceImpl implements BrandService {
     public Brand update(Brand brand) {
         brand.setUpdated(new Date());
         return save(brand);
+    }
+
+    @Override
+    public List<Brand> getAll() {
+        return brandRepository.findAll();
     }
 
     @Override

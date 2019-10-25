@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
+import java.util.List;
 import java.util.UUID;
 
 
@@ -36,6 +37,11 @@ public class CategoryServiceImpl implements CategoryService {
     public Category update(Category category) {
         category.setUpdated(new Date());
         return save(category);
+    }
+
+    @Override
+    public List<Category> getAll() {
+        return categoryRepository.findAll();
     }
 
     @Override

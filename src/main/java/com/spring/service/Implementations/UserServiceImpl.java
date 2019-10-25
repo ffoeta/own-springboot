@@ -1,7 +1,7 @@
 package com.spring.service.Implementations;
 
 import com.spring.model.Role;
-import com.spring.model.Status;
+import com.spring.model.enums.Status;
 import com.spring.model.User;
 import com.spring.repository.RoleRepository;
 import com.spring.repository.UserRepository;

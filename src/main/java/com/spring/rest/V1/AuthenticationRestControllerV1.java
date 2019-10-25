@@ -1,6 +1,6 @@
 package com.spring.rest.V1;
 
-import com.spring.dto.open.AuthenticationRequestDto;
+import com.spring.dto.V1.open.AuthenticationRequestDtoV1;
 import com.spring.model.User;
 import com.spring.security.jwt.JwtTokenProvider;
 import com.spring.service.interfaces.UserService;
@@ -32,7 +32,7 @@ public class AuthenticationRestControllerV1 {
     }
 
     @PostMapping("login")
-    public ResponseEntity login(@RequestBody AuthenticationRequestDto requestDto) {
+    public ResponseEntity login(@RequestBody AuthenticationRequestDtoV1 requestDto) {
         String username = requestDto.getUsername();
         authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, requestDto.getPassword()));
         User user = userService.findByUsername(username);
@@ -54,7 +54,7 @@ public class AuthenticationRestControllerV1 {
     }
 
     @PostMapping("sign")
-    public ResponseEntity sign(@RequestBody AuthenticationRequestDto requestDto) {
+    public ResponseEntity sign(@RequestBody AuthenticationRequestDtoV1 requestDto) {
 
         User user = new User();
         user.setUsername(requestDto.getUsername());

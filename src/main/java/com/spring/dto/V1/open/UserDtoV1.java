@@ -1,14 +1,12 @@
-package com.spring.dto.open;
+package com.spring.dto.V1.open;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.spring.model.User;
 import lombok.Data;
 
-import java.util.UUID;
-
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class UserDto {
+public class UserDtoV1 {
     private String username;
 
     public User toUser(){
@@ -20,12 +18,12 @@ public class UserDto {
         return user;
     }
 
-    public static UserDto fromUser(User user) {
-        UserDto userDto = new UserDto();
+    public static UserDtoV1 fromUser(User user) {
+        UserDtoV1 userDtoV1 = new UserDtoV1();
 
-        userDto.setUsername(user.getUsername());
+        userDtoV1.setUsername(user.getUsername());
 
-        return userDto;
+        return userDtoV1;
     }
 }
 

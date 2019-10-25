@@ -2,6 +2,7 @@ package com.spring.service.interfaces;
 
 import com.spring.model.Brand;
 
+import java.util.List;
 import java.util.UUID;
 
 public interface BrandService {
@@ -11,6 +12,8 @@ public interface BrandService {
     Brand save(Brand brand);
 
     Brand update(Brand brand);
+
+    List<Brand> getAll();
 
     Brand findById(UUID id);
 

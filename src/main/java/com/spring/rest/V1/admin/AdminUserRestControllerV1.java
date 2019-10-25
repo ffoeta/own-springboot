@@ -1,7 +1,7 @@
 package com.spring.rest.V1.admin;
 
-import com.spring.dto.admin.user.AdminUserDto;
-import com.spring.dto.open.ByIdRequestDto;
+import com.spring.dto.V1.admin.user.AdminUserDtoV1;
+import com.spring.dto.V1.open.ByIdRequestDtoV1;
 import com.spring.model.User;
 import com.spring.service.interfaces.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,8 +32,8 @@ public class AdminUserRestControllerV1 {
     }
 
     @GetMapping(value = "user")
-    public ResponseEntity<AdminUserDto> getUserById(@RequestBody ByIdRequestDto byIdRequestDto) {
-        UUID id = byIdRequestDto.getId();
+    public ResponseEntity<AdminUserDtoV1> getUserById(@RequestBody ByIdRequestDtoV1 byIdRequestDtoV1) {
+        UUID id = byIdRequestDtoV1.getId();
         System.out.println(id);
         User user = userService.findById(id);
 
@@ -41,21 +41,21 @@ public class AdminUserRestControllerV1 {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
 
-        return new ResponseEntity<AdminUserDto>(AdminUserDto.fromUser(user), HttpStatus.OK);
+        return new ResponseEntity<AdminUserDtoV1>(AdminUserDtoV1.fromUser(user), HttpStatus.OK);
     }
 
     @GetMapping(value = "users")
     public ResponseEntity getUsers() {
         List<User> users = userService.getAll();
 
-        List<AdminUserDto> result = new ArrayList<>();
+        List<AdminUserDtoV1> result = new ArrayList<>();
 
         if (users.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
 
         users.forEach(user -> {
-            result.add(AdminUserDto.fromUser(user));
+            result.add(AdminUserDtoV1.fromUser(user));
         });
 
         return new ResponseEntity<>(result, HttpStatus.OK);

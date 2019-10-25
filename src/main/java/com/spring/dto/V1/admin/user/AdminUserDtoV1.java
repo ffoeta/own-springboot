@@ -1,7 +1,7 @@
-package com.spring.dto.admin.user;
+package com.spring.dto.V1.admin.user;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.spring.model.Status;
+import com.spring.model.enums.Status;
 import com.spring.model.User;
 import lombok.Data;
 
@@ -9,7 +9,7 @@ import java.util.UUID;
 
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class AdminUserDto {
+public class AdminUserDtoV1 {
     private UUID id;
     private String username;
     private Status status;
@@ -24,13 +24,13 @@ public class AdminUserDto {
         return user;
     }
 
-    public static AdminUserDto fromUser(User user) {
-        AdminUserDto adminUserDto = new AdminUserDto();
+    public static AdminUserDtoV1 fromUser(User user) {
+        AdminUserDtoV1 adminUserDtoV1 = new AdminUserDtoV1();
 
-        adminUserDto.setId(user.getId());
-        adminUserDto.setUsername(user.getUsername());
-        adminUserDto.setStatus(user.getStatus());
+        adminUserDtoV1.setId(user.getId());
+        adminUserDtoV1.setUsername(user.getUsername());
+        adminUserDtoV1.setStatus(user.getStatus());
 
-        return adminUserDto;
+        return adminUserDtoV1;
     }
 }

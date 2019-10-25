@@ -1,7 +1,7 @@
 package com.spring.rest.V1.open;
 
-import com.spring.dto.open.UserDto;
-import com.spring.model.Status;
+import com.spring.dto.V1.open.UserDtoV1;
+import com.spring.model.enums.Status;
 import com.spring.model.User;
 import com.spring.security.jwt.JwtTokenProvider;
 import com.spring.service.Implementations.UserServiceImpl;
@@ -9,12 +9,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 @RestController
@@ -35,9 +33,9 @@ public class UserRestControllerV1 {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
 
-        List<UserDto> result = new ArrayList<>();
+        List<UserDtoV1> result = new ArrayList<>();
         users.forEach(user -> {
-            result.add(UserDto.fromUser(user));
+            result.add(UserDtoV1.fromUser(user));
         });
 
         return new ResponseEntity<>(result, HttpStatus.OK);

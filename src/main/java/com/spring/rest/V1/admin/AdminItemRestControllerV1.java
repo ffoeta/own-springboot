@@ -1,8 +1,8 @@
 package com.spring.rest.V1.admin;
 
-import com.spring.dto.open.ByIdRequestDto;
-import com.spring.dto.open.item.ItemDto;
-import com.spring.dto.admin.item.AdminItemDto;
+import com.spring.dto.V1.open.ByIdRequestDtoV1;
+import com.spring.dto.V1.open.item.ItemDtoV1;
+import com.spring.dto.V1.admin.item.AdminItemDtoV1;
 import com.spring.model.Brand;
 import com.spring.model.Category;
 import com.spring.model.Item;
@@ -39,18 +39,18 @@ public class AdminItemRestControllerV1 {
     public ResponseEntity getItems() {
         List<Item> items = itemService.getAll();
         System.out.println(items.size());
-        List<ItemDto> itemsDto = new ArrayList<>();
+        List<ItemDtoV1> itemsDto = new ArrayList<>();
         items.forEach(item -> {
-            itemsDto.add(ItemDto.fromItem(item));
+            itemsDto.add(ItemDtoV1.fromItem(item));
         });
         return ResponseEntity.ok(itemsDto);
     }
 
     @PostMapping("item")
-    public ResponseEntity addItem(@RequestBody ItemDto itemDto) {
-        Item item = itemDto.toItem();
-        Category category = categoryService.findByName(itemDto.getCategory());
-        Brand brand = brandService.findByName(itemDto.getBrand());
+    public ResponseEntity addItem(@RequestBody ItemDtoV1 itemDtoV1) {
+        Item item = itemDtoV1.toItem();
+        Category category = categoryService.findByName(itemDtoV1.getCategory());
+        Brand brand = brandService.findByName(itemDtoV1.getBrand());
         if (category == null) {
             item.setCategory(categoryService.findById(Constants.CATEGORY_NONE));
         } else {
@@ -62,15 +62,15 @@ public class AdminItemRestControllerV1 {
             item.setBrand(brand);
         }
 
-        return ResponseEntity.ok(AdminItemDto.from(itemService.save(item)));
+        return ResponseEntity.ok(AdminItemDtoV1.from(itemService.save(item)));
     }
 
     @GetMapping("item")
-    public ResponseEntity geById(@RequestBody ByIdRequestDto byIdRequestDto) {
-        Item item = itemService.findById(byIdRequestDto.getId());
+    public ResponseEntity geById(@RequestBody ByIdRequestDtoV1 byIdRequestDtoV1) {
+        Item item = itemService.findById(byIdRequestDtoV1.getId());
         if (item == null){
             return ResponseEntity.noContent().build();
         }
-        return ResponseEntity.ok(AdminItemDto.from(item));
+        return ResponseEntity.ok(AdminItemDtoV1.from(item));
     }
 }
