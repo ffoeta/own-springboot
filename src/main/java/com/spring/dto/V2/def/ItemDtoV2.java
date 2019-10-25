@@ -36,6 +36,7 @@ public class ItemDtoV2 {
         itemDto.setName(item.getName());
         itemDto.setCategory(CategoryDtoV2.from(item.getCategory()));
         itemDto.setBrand(BrandDtoV2.from(item.getBrand()));
+        itemDto.setDetails(ItemDetailsDtoV2.from(item.getDetails()));
 
         return itemDto;
     }
