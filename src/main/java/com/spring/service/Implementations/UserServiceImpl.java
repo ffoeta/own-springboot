@@ -1,5 +1,6 @@
 package com.spring.service.Implementations;
 
+import com.spring.dto.V2.body.UserBodyV2;
 import com.spring.model.Role;
 import com.spring.model.enums.Status;
 import com.spring.model.User;
@@ -74,5 +75,30 @@ public class UserServiceImpl implements UserService {
     @Override
     public void deleteById(UUID id) {
         userRepository.deleteById(id);
+    }
+
+    public User getUser(UserBodyV2 userBodyV2) {
+        User user = null;
+        if (userBodyV2.getId() != null) {
+            user = findById(userBodyV2.getId());
+        } else if (userBodyV2.getUsername() != null) {
+            user = findByUsername(userBodyV2.getUsername());
+        }
+        return user;
+    }
+
+    public User setIUser(User user, UserBodyV2 userBodyV2) {
+        if (user == null) {
+            return null;
+        }
+        String username = userBodyV2.getUsername();
+        String password = userBodyV2.getPassword();
+        if (username != null) {
+            user.setUsername(username);
+        }
+        if (password != null) {
+            user.setPassword(password);
+        }
+        return user;
     }
 }

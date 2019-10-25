@@ -1,6 +1,8 @@
 package com.spring.security.jwt;
 
 import com.spring.model.Role;
+import com.spring.model.User;
+import com.spring.service.interfaces.UserService;
 import io.jsonwebtoken.*;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,10 +17,7 @@ import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpServletRequest;
-import java.util.ArrayList;
-import java.util.Base64;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 @Component
 public class JwtTokenProvider {
@@ -32,6 +31,9 @@ public class JwtTokenProvider {
 
     @Autowired
     private UserDetailsService userDetailsService;
+
+    @Autowired
+    private UserService userService;
 
     @Bean
     public BCryptPasswordEncoder passwordEncoder() {
@@ -67,6 +69,14 @@ public class JwtTokenProvider {
 
     public String getUsername(String token) {
         return Jwts.parser().setSigningKey(secret).parseClaimsJws(token).getBody().getSubject();
+    }
+
+    public UUID getId(String token) {
+        return userService.findByUsername(getUsername(token)).getId();
+    }
+
+    public User getUser(String token) {
+        return userService.findByUsername(getUsername(token));
     }
 
     public String resolveToken(HttpServletRequest req) {

@@ -13,8 +13,8 @@ public interface Constants {
      static final String USER_ENDPOINT_V1 = "/api/v1/user/**";
      static final String REST_ENDPOINT_V1 = "/api/v1/rest/**";
 
-     static final String ADMIN_ENDPOINT_V2 = "/api/v2/authorized/head/**";
      static final String AUTH_ENDPOINT_V2 = "/api/v2/auth/**";
+     static final String ADMIN_ENDPOINT_V2 = "/api/v2/authorized/head/**";
      static final String USER_ENDPOINT_V2 = "/api/v2/authorized/user/**";
-     static final String ANON_ENDPOINT_V2 = "/api/v2/unauthorized/**";
+     static final String API_ENDPOINT_V2 = "/api/v2/rest/**";
 }

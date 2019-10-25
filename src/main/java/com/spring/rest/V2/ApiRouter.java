@@ -1,7 +1,6 @@
 package com.spring.rest.V2;
 
-import com.spring.dto.V2.admin.AdminItemDtoV2;
-import com.spring.dto.V2.anon.AnonItemDtoV2;
+import com.spring.dto.V2.def.ItemDtoV2;
 import com.spring.dto.V2.body.ItemBodyV2;
 import com.spring.dto.responses.PrettyResponse;
 import com.spring.model.Brand;
@@ -9,6 +8,7 @@ import com.spring.model.Category;
 import com.spring.model.Item;
 import com.spring.security.jwt.JwtTokenProvider;
 import com.spring.service.interfaces.*;
+import com.spring.utils.Constants;
 import com.spring.utils.Messages;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -21,8 +21,8 @@ import java.util.List;
 import java.util.UUID;
 
 @RestController
-@RequestMapping(value = "/api/v2/unauthorized/")
-public class AnonRouter {
+@RequestMapping(value = Constants.API_ENDPOINT_V2)
+public class ApiRouter {
 
     private final AuthenticationManager authenticationManager;
 
@@ -39,7 +39,7 @@ public class AnonRouter {
     private final ItemDetailsService itemDetailsService;
 
     @Autowired
-    public AnonRouter(AuthenticationManager authenticationManager, JwtTokenProvider jwtTokenProvider, UserService userService, CategoryService categoryService, BrandService brandService, ItemService itemService, ItemDetailsService itemDetailsService) {
+    public ApiRouter(AuthenticationManager authenticationManager, JwtTokenProvider jwtTokenProvider, UserService userService, CategoryService categoryService, BrandService brandService, ItemService itemService, ItemDetailsService itemDetailsService) {
         this.authenticationManager = authenticationManager;
         this.jwtTokenProvider = jwtTokenProvider;
         this.userService = userService;
@@ -93,7 +93,7 @@ public class AnonRouter {
             return new ResponseEntity<String>(Messages.ENG_ITEM_NOT_FOUND, HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<PrettyResponse>(
-                new PrettyResponse<AnonItemDtoV2>(AnonItemDtoV2.from(item)), HttpStatus.FOUND);
+                new PrettyResponse<ItemDtoV2>(ItemDtoV2.from(item)), HttpStatus.FOUND);
     }
 
     @GetMapping("items/select")
@@ -102,12 +102,12 @@ public class AnonRouter {
         if (items.isEmpty()){
             return new ResponseEntity<String>(Messages.ENG_ITEM_NO_CONTENT, HttpStatus.NO_CONTENT);
         }
-        List<AnonItemDtoV2> anonItemDtoV2List = new ArrayList<>();
+        List<ItemDtoV2> itemDtoV2List = new ArrayList<>();
         items.forEach(item -> {
-            anonItemDtoV2List.add(AnonItemDtoV2.from(item));
+            itemDtoV2List.add(ItemDtoV2.from(item));
         });
         return new ResponseEntity<PrettyResponse>(
-                new PrettyResponse<AnonItemDtoV2>(anonItemDtoV2List), HttpStatus.FOUND);
+                new PrettyResponse<ItemDtoV2>(itemDtoV2List), HttpStatus.FOUND);
     }
 
 

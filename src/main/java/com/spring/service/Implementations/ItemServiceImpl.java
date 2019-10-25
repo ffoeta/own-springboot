@@ -1,8 +1,13 @@
 package com.spring.service.Implementations;
 
+import com.spring.dto.V2.body.ItemBodyV2;
+import com.spring.model.Brand;
+import com.spring.model.Category;
 import com.spring.model.Item;
 import com.spring.model.ItemDetails;
 import com.spring.model.enums.Status;
+import com.spring.repository.BrandRepository;
+import com.spring.repository.CategoryRepository;
 import com.spring.repository.ItemDetailsRepository;
 import com.spring.repository.ItemRepository;
 import com.spring.service.interfaces.ItemService;
@@ -20,11 +25,15 @@ public class ItemServiceImpl implements ItemService {
 
     private final ItemRepository itemRepository;
     private final ItemDetailsRepository itemDetailsRepository;
+    private final CategoryRepository categoryRepository;
+    private final BrandRepository brandRepository;
 
     @Autowired
-    public ItemServiceImpl(ItemRepository itemRepository, ItemDetailsRepository itemDetailsRepository) {
+    public ItemServiceImpl(ItemRepository itemRepository, ItemDetailsRepository itemDetailsRepository, CategoryRepository categoryRepository, BrandRepository brandRepository) {
         this.itemRepository = itemRepository;
         this.itemDetailsRepository = itemDetailsRepository;
+        this.categoryRepository = categoryRepository;
+        this.brandRepository = brandRepository;
     }
 
     @Override
@@ -84,5 +93,40 @@ public class ItemServiceImpl implements ItemService {
     @Override
     public void deleteById(UUID id) {
         itemRepository.deleteById(id);
+    }
+
+    public Item getItem(ItemBodyV2 itemBodyV2) {
+        Item item = null;
+        if (itemBodyV2.getId() != null) {
+            item = findById(UUID.fromString(itemBodyV2.getId()));
+        } else {
+            item = findByName(itemBodyV2.getName());
+        }
+        return item;
+    }
+
+    public Item setItem(Item item, ItemBodyV2 itemBodyV2) {
+        if (item == null) {
+            return null;
+        }
+
+        UUID id = UUID.fromString(itemBodyV2.getId());
+        String name = itemBodyV2.getName();
+        Category category = categoryRepository.findByName(itemBodyV2.getCategoty());
+        Brand brand = brandRepository.findByName(itemBodyV2.getBrand());
+
+        if (id != null) {
+            item.setId(id);
+        }
+        if (name != null) {
+            item.setName(name);
+        }
+        if (category != null) {
+            item.setCategory(category);
+        }
+        if (brand != null) {
+            item.setBrand(brand);
+        }
+        return item;
     }
 }

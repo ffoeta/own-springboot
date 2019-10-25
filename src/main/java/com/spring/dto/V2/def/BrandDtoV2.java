@@ -1,4 +1,4 @@
-package com.spring.dto.V2.anon;
+package com.spring.dto.V2.def;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -9,20 +9,20 @@ import java.util.UUID;
 
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class AnonBrandDtoV2 {
+public class BrandDtoV2 {
 
     @JsonIgnore
     private UUID id;
 
     private String name;
 
-    public static AnonBrandDtoV2 from(Brand brand) {
-        AnonBrandDtoV2 anonBrandDtoV2 = new AnonBrandDtoV2();
+    public static BrandDtoV2 from(Brand brand) {
+        BrandDtoV2 brandDtoV2 = new BrandDtoV2();
 
-        anonBrandDtoV2.id = brand.getId();
-        anonBrandDtoV2.name = brand.getName();
+        brandDtoV2.id = brand.getId();
+        brandDtoV2.name = brand.getName();
 
-        return anonBrandDtoV2;
+        return brandDtoV2;
     }
 
     public Brand to() {

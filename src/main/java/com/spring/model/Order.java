@@ -5,13 +5,14 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.UUID;
 
 @Entity
 @Table(name = "orders")
 @Data
 public class Order extends BaseEntity {
     @Column(name = "user_id")
-    private String user_id;
+    private UUID user_id;
 
     @Column(name = "name")
     private String name;

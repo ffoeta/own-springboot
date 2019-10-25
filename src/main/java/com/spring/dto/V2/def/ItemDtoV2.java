@@ -1,24 +1,21 @@
-package com.spring.dto.V2.anon;
+package com.spring.dto.V2.def;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.spring.dto.V2.admin.AnonCategoryDtoV2;
-import com.spring.model.Category;
+import com.spring.dto.V2.admin.CategoryDtoV2;
 import com.spring.model.Item;
-import com.spring.model.enums.Status;
 import lombok.Data;
 
-import java.util.Date;
 import java.util.UUID;
 
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class AnonItemDtoV2 {
+public class ItemDtoV2 {
 
     private UUID id;
     private String name;
-    private AnonCategoryDtoV2 category;
-    private AnonBrandDtoV2 brand;
-    private AnonItemDetailsDtoV2 details;
+    private CategoryDtoV2 category;
+    private BrandDtoV2 brand;
+    private ItemDetailsDtoV2 details;
 
     public Item to(){
 
@@ -32,13 +29,13 @@ public class AnonItemDtoV2 {
         return item;
     }
 
-    public static AnonItemDtoV2 from(Item item){
-        AnonItemDtoV2 itemDto = new AnonItemDtoV2();
+    public static ItemDtoV2 from(Item item){
+        ItemDtoV2 itemDto = new ItemDtoV2();
 
         itemDto.setId(item.getId());
         itemDto.setName(item.getName());
-        itemDto.setCategory(AnonCategoryDtoV2.from(item.getCategory()));
-        itemDto.setBrand(AnonBrandDtoV2.from(item.getBrand()));
+        itemDto.setCategory(CategoryDtoV2.from(item.getCategory()));
+        itemDto.setBrand(BrandDtoV2.from(item.getBrand()));
 
         return itemDto;
     }

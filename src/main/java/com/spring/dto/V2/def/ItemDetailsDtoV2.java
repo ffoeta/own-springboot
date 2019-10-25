@@ -1,8 +1,7 @@
-package com.spring.dto.V2.anon;
+package com.spring.dto.V2.def;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.spring.model.City;
 import com.spring.model.ItemDetails;
 import com.spring.model.enums.Status;
 import lombok.Data;
@@ -11,7 +10,7 @@ import java.util.UUID;
 
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class AnonItemDetailsDtoV2 {
+public class ItemDetailsDtoV2 {
 
     @JsonIgnore
     private UUID id;
@@ -39,22 +38,22 @@ public class AnonItemDetailsDtoV2 {
     private Status status;
 
 
-    public static AnonItemDetailsDtoV2 from(ItemDetails itemDetails) {
-        AnonItemDetailsDtoV2 anonItemDetailsDtoV2 = new AnonItemDetailsDtoV2();
+    public static ItemDetailsDtoV2 from(ItemDetails itemDetails) {
+        ItemDetailsDtoV2 itemDetailsDtoV2 = new ItemDetailsDtoV2();
 
-        anonItemDetailsDtoV2.setId(itemDetails.getId());
-        anonItemDetailsDtoV2.setPrice(itemDetails.getPrice());
-        anonItemDetailsDtoV2.setCamera_f(itemDetails.getCamera_f());
-        anonItemDetailsDtoV2.setCamera_b(itemDetails.getCamera_b());
-        anonItemDetailsDtoV2.setCpu(itemDetails.getCpu());
-        anonItemDetailsDtoV2.setGpu(itemDetails.getGpu());
-        anonItemDetailsDtoV2.setNfc(itemDetails.getNfc());
-        anonItemDetailsDtoV2.setDiagonal(itemDetails.getDiagonal());
-        anonItemDetailsDtoV2.setNotes(itemDetails.getNotes());
-        anonItemDetailsDtoV2.setStatus(itemDetails.getStatus());
+        itemDetailsDtoV2.setId(itemDetails.getId());
+        itemDetailsDtoV2.setPrice(itemDetails.getPrice());
+        itemDetailsDtoV2.setCamera_f(itemDetails.getCamera_f());
+        itemDetailsDtoV2.setCamera_b(itemDetails.getCamera_b());
+        itemDetailsDtoV2.setCpu(itemDetails.getCpu());
+        itemDetailsDtoV2.setGpu(itemDetails.getGpu());
+        itemDetailsDtoV2.setNfc(itemDetails.getNfc());
+        itemDetailsDtoV2.setDiagonal(itemDetails.getDiagonal());
+        itemDetailsDtoV2.setNotes(itemDetails.getNotes());
+        itemDetailsDtoV2.setStatus(itemDetails.getStatus());
 
 
-        return anonItemDetailsDtoV2;
+        return itemDetailsDtoV2;
     }
 
     public ItemDetails to() {

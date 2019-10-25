@@ -1,5 +1,6 @@
 package com.spring.service.interfaces;
 
+import com.spring.dto.V2.body.ItemBodyV2;
 import com.spring.model.Item;
 
 import java.util.List;
@@ -17,4 +18,8 @@ public interface ItemService {
     List<Item> getAll();
 
     void deleteById(UUID id);
+
+    Item getItem(ItemBodyV2 itemBodyV2);
+
+    Item setItem(Item item, ItemBodyV2 itemBodyV2);
 }

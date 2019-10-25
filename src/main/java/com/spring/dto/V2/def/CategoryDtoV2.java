@@ -9,7 +9,7 @@ import java.util.UUID;
 
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class AnonCategoryDtoV2 {
+public class CategoryDtoV2 {
 
     @JsonIgnore
     private UUID id;
@@ -17,13 +17,13 @@ public class AnonCategoryDtoV2 {
     private String name;
 
 
-    public static AnonCategoryDtoV2 from(Category category) {
-        AnonCategoryDtoV2 anonCategoryDtoV2 = new AnonCategoryDtoV2();
+    public static CategoryDtoV2 from(Category category) {
+        CategoryDtoV2 categoryDtoV2 = new CategoryDtoV2();
 
-        anonCategoryDtoV2.id = category.getId();
-        anonCategoryDtoV2.name = category.getName();
+        categoryDtoV2.id = category.getId();
+        categoryDtoV2.name = category.getName();
 
-        return anonCategoryDtoV2;
+        return categoryDtoV2;
     }
 
     public Category to() {

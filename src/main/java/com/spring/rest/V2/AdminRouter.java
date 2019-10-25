@@ -11,6 +11,7 @@ import com.spring.model.enums.Status;
 import com.spring.dto.responses.PrettyResponse;
 import com.spring.security.jwt.JwtTokenProvider;
 import com.spring.service.interfaces.*;
+import com.spring.utils.Constants;
 import com.spring.utils.Messages;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -24,7 +25,7 @@ import java.util.UUID;
 
 
 @RestController
-@RequestMapping(value = "/api/v2/authorized/head/")
+@RequestMapping(value = Constants.ADMIN_ENDPOINT_V2)
 
 public class AdminRouter {
 
@@ -55,44 +56,11 @@ public class AdminRouter {
 
     //ITEM
 
-    public Item getItem(ItemBodyV2 itemBodyV2) {
-        Item item;
-        if (itemBodyV2.getId() != null) {
-            item = itemService.findById(UUID.fromString(itemBodyV2.getId()));
-        } else {
-            item = itemService.findByName(itemBodyV2.getName());
-        }
-        return item;
-    }
 
-    public Item setItem(Item item, ItemBodyV2 itemBodyV2) {
-        if (item == null) {
-            return null;
-        }
-
-        UUID id = UUID.fromString(itemBodyV2.getId());
-        String name = itemBodyV2.getName();
-        Category category = categoryService.findByName(itemBodyV2.getCategoty());
-        Brand brand = brandService.findByName(itemBodyV2.getBrand());
-
-        if (id != null) {
-            item.setId(id);
-        }
-        if (name != null) {
-            item.setName(name);
-        }
-        if (category != null) {
-            item.setCategory(category);
-        }
-        if (brand != null) {
-            item.setBrand(brand);
-        }
-        return item;
-    }
 
     @GetMapping("item/select")
     public ResponseEntity selectItem(@RequestBody ItemBodyV2 itemBodyV2) {
-        Item item = getItem(itemBodyV2);
+        Item item = itemService.getItem(itemBodyV2);
         if (item == null) {
             return new ResponseEntity<String>(Messages.ENG_ITEM_NOT_FOUND, HttpStatus.NOT_FOUND);
         }
@@ -126,36 +94,36 @@ public class AdminRouter {
 
     @PostMapping("item/insert")
     public ResponseEntity insertItem(@RequestBody ItemBodyV2 itemBodyV2){
-        Item item = getItem(itemBodyV2);
+        Item item = itemService.getItem(itemBodyV2);
         if (item != null) {
             return new ResponseEntity<String>(Messages.ENG_ITEM_BAD_REQUEST, HttpStatus.BAD_REQUEST);
         }
 
         item = new Item();
-        item = setItem(item, itemBodyV2);
+        item = itemService.setItem(item, itemBodyV2);
 
         if (item == null){
             return ResponseEntity.badRequest().build();
         }
         return new ResponseEntity<PrettyResponse>(
-                new PrettyResponse<AdminItemDtoV2>(AdminItemDtoV2.from(itemService.save(item))), HttpStatus.FOUND);
+                new PrettyResponse<AdminItemDtoV2>(AdminItemDtoV2.from(itemService.save(item))), HttpStatus.CREATED);
     }
 
     @PutMapping("item/update")
     public ResponseEntity updateItem(@RequestBody ItemBodyV2 itemBodyV2) {
-        Item item = getItem(itemBodyV2);
+        Item item = itemService.getItem(itemBodyV2);
         if (item == null) {
             return new ResponseEntity<String>(Messages.ENG_ITEM_NOT_FOUND, HttpStatus.NOT_FOUND);
         }
-        item = setItem(item, itemBodyV2);
+        item = itemService.setItem(item, itemBodyV2);
 
         return new ResponseEntity<PrettyResponse>(
-                new PrettyResponse<AdminItemDtoV2>(AdminItemDtoV2.from(itemService.update(item))), HttpStatus.FOUND);
+                new PrettyResponse<AdminItemDtoV2>(AdminItemDtoV2.from(itemService.update(item))), HttpStatus.ACCEPTED);
     }
 
     @PutMapping("item/invalidate")
     public ResponseEntity invalidateItem(@RequestBody ItemBodyV2 itemBodyV2) {
-        Item item = getItem(itemBodyV2);
+        Item item = itemService.getItem(itemBodyV2);
         if (item == null){
             return new ResponseEntity<String>(Messages.ENG_ITEM_NOT_FOUND, HttpStatus.NOT_FOUND);
         }
@@ -166,7 +134,7 @@ public class AdminRouter {
 
     @PutMapping("item/restore")
     public ResponseEntity restoreItem(@RequestBody ItemBodyV2 itemBodyV2) {
-        Item item = getItem(itemBodyV2);
+        Item item = itemService.getItem(itemBodyV2);
         if (item == null){
             return new ResponseEntity<String>(Messages.ENG_ITEM_NOT_FOUND, HttpStatus.NOT_FOUND);
         }

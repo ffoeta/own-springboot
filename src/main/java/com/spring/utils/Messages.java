@@ -13,8 +13,15 @@ public interface Messages {
     static String ENG_USER_NOT_FOUND = "Server response: User not found";
     static String ENG_USER_NO_CONTENT = "Server response: User no content User";
     static String ENG_USER_BAD_REQUEST = "Server response: Bad request for User";
+    static String ENG_USER_NOT_ALLOWED = "Server response: Now allowed request from User";
 
     static String ENG_BRAND_NOT_FOUND = "Server response: Brand not found";
     static String ENG_BRAND_NO_CONTENT = "Server response: Brand no content";
     static String ENG_BRAND_BAD_REQUEST = "Server response: Bad request for Brand";
+    static String ENG_BRAND_NOT_ALLOWED = "Server response: Now allowed request from Brand";
+
+    static String ENG_ORDER_NOT_FOUND = "Server response: Order not found";
+    static String ENG_ORDER_NO_CONTENT = "Server response: Order no content";
+    static String ENG_ORDER_BAD_REQUEST = "Server response: Bad request for Order";
+    static String ENG_ORDER_NOT_ALLOWED = "Server response: Now allowed request from Order";
 }

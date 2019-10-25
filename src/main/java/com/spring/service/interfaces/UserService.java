@@ -1,5 +1,6 @@
 package com.spring.service.interfaces;
 
+import com.spring.dto.V2.body.UserBodyV2;
 import com.spring.model.User;
 
 import java.util.List;
@@ -17,4 +18,8 @@ public interface UserService {
     List<User> getAll();
 
     void deleteById(UUID id);
+
+    User getUser(UserBodyV2 userBodyV2);
+
+    User setIUser(User user, UserBodyV2 userBodyV2);
 }

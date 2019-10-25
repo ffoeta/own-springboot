@@ -1,4 +1,4 @@
-package com.spring.dto.V2.anon;
+package com.spring.dto.V2.def;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -7,7 +7,7 @@ import lombok.Data;
 
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class AnonUserDtoV2 {
+public class UserDtoV2 {
     private String username;
 
     @JsonIgnore
@@ -23,12 +23,12 @@ public class AnonUserDtoV2 {
         return user;
     }
 
-    public static AnonUserDtoV2 fromUser(User user) {
-        AnonUserDtoV2 anonUserDtoV2 = new AnonUserDtoV2();
+    public static UserDtoV2 fromUser(User user) {
+        UserDtoV2 userDtoV2 = new UserDtoV2();
 
-        anonUserDtoV2.setUsername(user.getUsername());
-        anonUserDtoV2.setPassword(user.getPassword());
+        userDtoV2.setUsername(user.getUsername());
+        userDtoV2.setPassword(user.getPassword());
 
-        return anonUserDtoV2;
+        return userDtoV2;
     }
 }
