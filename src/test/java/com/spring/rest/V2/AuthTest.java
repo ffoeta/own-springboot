@@ -48,77 +48,77 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 
 
-@RunWith(SpringRunner.class)
-@SpringBootTest
-@AutoConfigureMockMvc
-public class AuthTest {
+//@RunWith(SpringRunner.class)
+//@SpringBootTest
+//@AutoConfigureMockMvc
+//public class AuthTest {
 
-    @Autowired
-    private WebApplicationContext webApplicationContext;
-    private MockMvc mockMvc;
+//    @Autowired
+//    private WebApplicationContext webApplicationContext;
+//    private MockMvc mockMvc;
+//
+//    @Before
+//    public void setUp() {
+//        mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).build();
+//    }
+//
+//    @Autowired
+//    AuthRouter authRouter;
+//
+//    @Autowired
+//    private WebApplicationContext context;
 
-    @Before
-    public void setUp() {
-        mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).build();
-    }
 
-    @Autowired
-    AuthRouter authRouter;
-
-    @Autowired
-    private WebApplicationContext context;
-
-
-    @Test
-    public void UserSecurityTestV1() throws Exception{
-        this.mockMvc.perform(get(Constants.USER_ENDPOINT_V1))
-                .andDo(print())
-                .andExpect(status().isForbidden());
-    }
-
-    @Test
-    public void AdminSecurityTestV1() throws Exception{
-        this.mockMvc.perform(get(Constants.ADMIN_ENDPOINT_V1))
-                .andDo(print())
-                .andExpect(status().isForbidden());
-    }
-
-    @Test
-    public void UserSecurityTestV2() throws Exception{
-        this.mockMvc.perform(get(Constants.USER_ENDPOINT_V2))
-                .andDo(print())
-                .andExpect(status().isForbidden());
-    }
-
-    @Test
-    public void AdminSecurityTestV2() throws Exception{
-        this.mockMvc.perform(get(Constants.ADMIN_ENDPOINT_V2))
-                .andDo(print())
-                .andExpect(status().isForbidden());
-    }
-
-    @Test
-    public void LoginTestV1() throws Exception{
-        this.mockMvc.perform(formLogin().user("test").password("test"))
-                .andDo(print())
-                .andExpect(status().isOk());
-    }
-
-    @Test
-    public void LoginTestV2() throws Exception{
-
-        ObjectMapper mapper = new ObjectMapper();
-        AuthenticationRequestDtoV1 authenticationRequestDtoV1 = new AuthenticationRequestDtoV1();
-        authenticationRequestDtoV1.setUsername("test");
-        authenticationRequestDtoV1.setPassword("test");
-
-        String json = mapper.writeValueAsString(authenticationRequestDtoV1);
-
-        this.mockMvc.perform(post("/api/v1/auth/login").contentType(MediaType.APPLICATION_JSON_UTF8)
-                .content(json))
-                .andDo(print())
-                .andExpect(status().isOk());
-    }
+//    @Test
+//    public void UserSecurityTestV1() throws Exception{
+//        this.mockMvc.perform(get(Constants.USER_ENDPOINT_V1))
+//                .andDo(print())
+//                .andExpect(status().isForbidden());
+//    }
+//
+//    @Test
+//    public void AdminSecurityTestV1() throws Exception{
+//        this.mockMvc.perform(get(Constants.ADMIN_ENDPOINT_V1))
+//                .andDo(print())
+//                .andExpect(status().isForbidden());
+//    }
+//
+//    @Test
+//    public void UserSecurityTestV2() throws Exception{
+//        this.mockMvc.perform(get(Constants.USER_ENDPOINT_V2))
+//                .andDo(print())
+//                .andExpect(status().isForbidden());
+//    }
+//
+//    @Test
+//    public void AdminSecurityTestV2() throws Exception{
+//        this.mockMvc.perform(get(Constants.ADMIN_ENDPOINT_V2))
+//                .andDo(print())
+//                .andExpect(status().isForbidden());
+//    }
+//
+//    @Test
+//    public void LoginTestV1() throws Exception{
+//        this.mockMvc.perform(formLogin().user("test").password("test"))
+//                .andDo(print())
+//                .andExpect(status().isOk());
+//    }
+//
+//    @Test
+//    public void LoginTestV2() throws Exception{
+//
+//        ObjectMapper mapper = new ObjectMapper();
+//        AuthenticationRequestDtoV1 authenticationRequestDtoV1 = new AuthenticationRequestDtoV1();
+//        authenticationRequestDtoV1.setUsername("test");
+//        authenticationRequestDtoV1.setPassword("test");
+//
+//        String json = mapper.writeValueAsString(authenticationRequestDtoV1);
+//
+//        this.mockMvc.perform(post("/api/v1/auth/login").contentType(MediaType.APPLICATION_JSON_UTF8)
+//                .content(json))
+//                .andDo(print())
+//                .andExpect(status().isOk());
+//    }
 
 //    @Test
 //    public void SignUpTestFailedV2() throws Exception{
@@ -135,4 +135,4 @@ public class AuthTest {
 //                .andDo(print())
 //                .andExpect();
 //    }
-}
+//}
